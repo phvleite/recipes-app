@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function Login() {
+function Login({ history }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disabledButton, setDisabledButton] = useState(true);
@@ -15,7 +16,6 @@ function Login() {
   function handleChange({ target: { name, value } }) {
     if (name === 'email') {
       setEmail(value);
-      console.log('chega aqui');
     } else {
       setPassword(value);
     }
@@ -23,9 +23,12 @@ function Login() {
     setDisabledButton(!validate());
   }
 
-  // const onClick = () => {
-
-  // };
+  function submitForm() {
+    localStorage.mealsToken = 1;
+    localStorage.cocktailsToken = 1;
+    localStorage.user = JSON.stringify({ email });
+    history.push('/foods');
+  }
 
   return (
     <form>
@@ -48,11 +51,15 @@ function Login() {
         type="button"
         data-testid="login-submit-btn"
         value="Enter"
-        // onChange={ onCLick }
+        onClick={ submitForm }
         disabled={ disabledButton }
       />
     </form>
   );
 }
+
+Login.propTypes = {
+  history: PropTypes.objectOf(),
+}.isRequerid;
 
 export default Login;
