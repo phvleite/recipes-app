@@ -55,13 +55,45 @@ const Header = (props) => {
         {
           (hideSearch)
             ? (
-              <input
-                type="text"
-                name="search"
-                data-testid="search-input"
-                value={ search }
-                onChange={ ({ target: { value } }) => setSearch(value) }
-              />
+              <>
+                <input
+                  type="text"
+                  name="search"
+                  data-testid="search-input"
+                  value={ search }
+                  onChange={ ({ target: { value } }) => setSearch(value) }
+                />
+                <div>
+                  <label htmlFor="ingrediente">
+                    <input
+                      type="radio"
+                      name="search"
+                      id="ingrediente"
+                      data-testid="ingredient-search-radio"
+                    />
+                    Ingrediente
+                  </label>
+                  <label htmlFor="nome">
+                    <input
+                      type="radio"
+                      name="search"
+                      id="nome"
+                      data-testid="name-search-radio"
+                    />
+                    Nome
+                  </label>
+                  <label htmlFor="primeiraLetra">
+                    <input
+                      type="radio"
+                      name="search"
+                      id="primeiraLetra"
+                      data-testid="first-letter-search-radio"
+                    />
+                    Primeira Letra
+                  </label>
+                  <button type="button" data-testid="exec-search-btn">Search</button>
+                </div>
+              </>
             )
             : ''
         }
