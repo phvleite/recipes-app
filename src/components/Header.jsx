@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import ProfileIcon from '../images/profileIcon.svg';
@@ -18,6 +18,9 @@ const Header = (props) => {
     'Profile',
   ];
 
+  const [search, setSearch] = useState('');
+  const [hideSearch, setHideSearch] = useState(false);
+
   pagesTitle.forEach((pages) => {
     if (pages === title) {
       isRend = false;
@@ -33,8 +36,35 @@ const Header = (props) => {
       </div>
       <div data-testid="page-title">{ title }</div>
       <div>
-        { isRend
-          && <img src={ SearchIcon } alt="icone perfil" data-testid="search-top-btn" /> }
+        {
+          isRend
+          && (
+            <button
+              type="button"
+              onClick={ () => setHideSearch(!hideSearch) }
+            >
+              <img
+                src={ SearchIcon }
+                alt="icone perfil"
+                data-testid="search-top-btn"
+              />
+            </button>)
+        }
+      </div>
+      <div>
+        {
+          (hideSearch)
+            ? (
+              <input
+                type="text"
+                name="search"
+                data-testid="search-input"
+                value={ search }
+                onChange={ ({ target: { value } }) => setSearch(value) }
+              />
+            )
+            : ''
+        }
       </div>
     </header>
   );
