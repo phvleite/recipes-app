@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import ProfileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
+import RecipesContext from '../context/RecipesContext';
 
 const Header = (props) => {
   const { title } = props;
@@ -17,6 +18,8 @@ const Header = (props) => {
     'Favorite Recipes',
     'Profile',
   ];
+
+  const { returnSelectedOption } = useContext(RecipesContext);
 
   const [search, setSearch] = useState('');
   const [hideSearch, setHideSearch] = useState(false);
@@ -70,6 +73,7 @@ const Header = (props) => {
                       name="search"
                       id="ingrediente"
                       data-testid="ingredient-search-radio"
+                      onChange={ returnSelectedOption }
                     />
                     Ingrediente
                   </label>
@@ -79,6 +83,7 @@ const Header = (props) => {
                       name="search"
                       id="nome"
                       data-testid="name-search-radio"
+                      onChange={ returnSelectedOption }
                     />
                     Nome
                   </label>
@@ -88,6 +93,7 @@ const Header = (props) => {
                       name="search"
                       id="primeiraLetra"
                       data-testid="first-letter-search-radio"
+                      onChange={ returnSelectedOption }
                     />
                     Primeira Letra
                   </label>
