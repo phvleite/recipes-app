@@ -24,7 +24,7 @@ const Header = (props) => {
   ];
 
   const { returnSelectedOption,
-    search, setSearch } = useContext(RecipesContext);
+    search, setSearch, onClick } = useContext(RecipesContext);
 
   const [hideSearch, setHideSearch] = useState(false);
 
@@ -82,7 +82,7 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id={ `fetch${typeRecipes()}byIngredient` }
+                      id={ `fetch${typeRecipes()}ByIngredient` }
                       data-testid="ingredient-search-radio"
                       onChange={ returnSelectedOption }
                     />
@@ -92,7 +92,7 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id={ `fetch${typeRecipes()}byName` }
+                      id={ `fetch${typeRecipes()}ByName` }
                       data-testid="name-search-radio"
                       onChange={ returnSelectedOption }
                     />
@@ -102,7 +102,7 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id={ `fetch${typeRecipes()}byFirstLetter` }
+                      id={ `fetch${typeRecipes()}ByFirstLetter` }
                       data-testid="first-letter-search-radio"
                       onChange={ returnSelectedOption }
                     />
@@ -111,7 +111,7 @@ const Header = (props) => {
                   <button
                     type="button"
                     data-testid="exec-search-btn"
-                    /* onClick={} */
+                    onClick={ onClick }
                   >
                     Search
                   </button>

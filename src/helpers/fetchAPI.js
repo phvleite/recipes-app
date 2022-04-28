@@ -34,10 +34,14 @@ const fetchAPI = async (chooseUrl, query) => {
     fetchCocktailIngredientsByList: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
   };
 
+  console.log(chooseUrl);
+  console.log(query);
+  console.log(verifyUrl[chooseUrl]);
+
   if (query.length !== 1
     && (chooseUrl === 'fetchMealByFirstLetter'
     || chooseUrl === 'fetchCocktailByFirstLetter')) {
-    global.alert('Sua busca deve conter somente 1 (um) caracter');
+    global.alert('Your search must have only 1 (one) character');
   }
   try {
     const response = await fetch(verifyUrl[chooseUrl]);
