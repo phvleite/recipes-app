@@ -3,11 +3,11 @@ import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 
 function Foods() {
-  const { selectedOption } = useContext(RecipesContext);
+  const { selectedOption, dataRecipes } = useContext(RecipesContext);
 
   useEffect(() => {
-    console.log(selectedOption);
-  }, [selectedOption]);
+    console.log(dataRecipes);
+  }, [dataRecipes]);
 
   return (
     <>
