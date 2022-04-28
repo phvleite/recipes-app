@@ -5,10 +5,6 @@ import ProfileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import RecipesContext from '../context/RecipesContext';
 
-/* Drinks
-  Ingredients
-  Nationalities */
-
 const Header = (props) => {
   const { title } = props;
   let isRend = true;

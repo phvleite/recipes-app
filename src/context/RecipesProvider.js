@@ -4,18 +4,13 @@ import RecipesContext from './RecipesContext';
 import fetchAPI from '../helpers/fetchAPI';
 
 function RecipesProvider({ children }) {
-  /*  useEffect(() => {}, []); */
-  /*  const [fetchIngredients, setFetchIngredients] = useState('');
-  const [fetchName, setFetchName] = useState('');
-  const [fetchFirstLetter, setfetchFirstLetter] = useState(''); */
-
   const [search, setSearch] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [dataRecipes, setDataRecipes] = useState([]);
 
   async function onClick() {
     const returnAPI = await fetchAPI(selectedOption, search);
-    setDataRecipes([returnAPI]);
+    setDataRecipes(returnAPI);
   }
 
   function returnSelectedOption({ target }) {
