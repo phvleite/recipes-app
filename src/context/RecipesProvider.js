@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
-// import fetchByCategories from '../helpers/fetchByCategories';
+// import fetchAPI from '../helpers/fetchAPI';
 
 function RecipesProvider({ children }) {
   /*  useEffect(() => {}, []); */
@@ -9,6 +9,7 @@ function RecipesProvider({ children }) {
   const [fetchName, setFetchName] = useState('');
   const [fetchFirstLetter, setfetchFirstLetter] = useState(''); */
 
+  const [search, setSearch] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
 
   function returnSelectedOption({ target }) {
@@ -18,6 +19,8 @@ function RecipesProvider({ children }) {
   }
 
   const contextValue = {
+    search,
+    setSearch,
     selectedOption,
     returnSelectedOption,
   };

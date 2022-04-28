@@ -5,6 +5,10 @@ import ProfileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import RecipesContext from '../context/RecipesContext';
 
+/* Drinks
+  Ingredients
+  Nationalities */
+
 const Header = (props) => {
   const { title } = props;
   let isRend = true;
@@ -19,10 +23,17 @@ const Header = (props) => {
     'Profile',
   ];
 
-  const { returnSelectedOption } = useContext(RecipesContext);
+  const { returnSelectedOption,
+    search, setSearch } = useContext(RecipesContext);
 
-  const [search, setSearch] = useState('');
   const [hideSearch, setHideSearch] = useState(false);
+
+  function typeRecipes() {
+    if (title === 'Foods') {
+      return 'Meal';
+    }
+    return 'Cocktail';
+  }
 
   pagesTitle.forEach((pages) => {
     if (pages === title) {
@@ -71,7 +82,7 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id="ingrediente"
+                      id={ `fetch${typeRecipes()}byIngredient` }
                       data-testid="ingredient-search-radio"
                       onChange={ returnSelectedOption }
                     />
@@ -81,7 +92,7 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id="nome"
+                      id={ `fetch${typeRecipes()}byName` }
                       data-testid="name-search-radio"
                       onChange={ returnSelectedOption }
                     />
@@ -91,13 +102,19 @@ const Header = (props) => {
                     <input
                       type="radio"
                       name="search"
-                      id="primeiraLetra"
+                      id={ `fetch${typeRecipes()}byFirstLetter` }
                       data-testid="first-letter-search-radio"
                       onChange={ returnSelectedOption }
                     />
                     Primeira Letra
                   </label>
-                  <button type="button" data-testid="exec-search-btn">Search</button>
+                  <button
+                    type="button"
+                    data-testid="exec-search-btn"
+                    /* onClick={} */
+                  >
+                    Search
+                  </button>
                 </div>
               </>
             )
