@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import ProfileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
-import recipesContext from '../context/recipesContext';
+import RecipesContext from '../context/RecipesContext';
 
 const Header = (props) => {
   const { title } = props;
@@ -19,7 +19,7 @@ const Header = (props) => {
     'Profile',
   ];
 
-  const contextValue = useContext(recipesContext);
+  const { returnSelectedOption } = useContext(RecipesContext);
 
   const [search, setSearch] = useState('');
   const [hideSearch, setHideSearch] = useState(false);
@@ -32,7 +32,6 @@ const Header = (props) => {
 
   return (
     <header>
-      {console.log(contextValue)}
       <div>
         <Link exact to="/profile">
           <img src={ ProfileIcon } alt="icone perfil" data-testid="profile-top-btn" />
@@ -74,7 +73,7 @@ const Header = (props) => {
                       name="search"
                       id="ingrediente"
                       data-testid="ingredient-search-radio"
-                      onChange={ ({ target: { id } }) => returnSelectedOption(id) }
+                      onChange={ returnSelectedOption }
                     />
                     Ingrediente
                   </label>
@@ -84,7 +83,7 @@ const Header = (props) => {
                       name="search"
                       id="nome"
                       data-testid="name-search-radio"
-                      onChange={ ({ target: { id } }) => returnSelectedOption(id) }
+                      onChange={ returnSelectedOption }
                     />
                     Nome
                   </label>
@@ -94,7 +93,7 @@ const Header = (props) => {
                       name="search"
                       id="primeiraLetra"
                       data-testid="first-letter-search-radio"
-                      onChange={ ({ target: { id } }) => returnSelectedOption(id) }
+                      onChange={ returnSelectedOption }
                     />
                     Primeira Letra
                   </label>
