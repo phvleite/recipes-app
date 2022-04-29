@@ -7,9 +7,13 @@ function RecipesProvider({ children }) {
   const [search, setSearch] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [dataRecipes, setDataRecipes] = useState([]);
+  const [dataReturnRecipes, setDataReturnRecipes] = useState('');
 
   async function onClick() {
     const returnAPI = await fetchAPI(selectedOption, search);
+    if (returnAPI.length === 0) {
+      setDataReturnRecipes('emptyReturn');
+    }
     setDataRecipes(returnAPI);
   }
 
@@ -25,6 +29,7 @@ function RecipesProvider({ children }) {
     returnSelectedOption,
     onClick,
     dataRecipes,
+    dataReturnRecipes,
   };
 
   return (
