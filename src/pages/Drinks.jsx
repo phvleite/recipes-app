@@ -1,25 +1,26 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
+import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 
 function Drinks() {
   const { selectedOption, dataRecipes } = useContext(RecipesContext);
 
-  useEffect(() => {
-    console.log(dataRecipes);
-  }, [dataRecipes]);
-
   const optionSelected = selectedOption === 'fetchMealByName'
     || selectedOption === 'fetchCocktailByName';
 
-  const isOneRecipes = optionSelected && dataRecipes.length === 1;
+  const isOneRecipe = optionSelected && dataRecipes.length === 1;
+  const isMoreThanOneRecipe = dataRecipes.length > 1 && optionSelected;
+
+  console.log(dataRecipes);
 
   return (
     <>
       <Header title="Drinks" />
       <div>
-        { isOneRecipes && <Redirect to={ `/drinks/${dataRecipes[0].idDrink}` } /> }
+        { isOneRecipe && <Redirect to={ `/drinks/${dataRecipes[0].idDrink}` } /> }
+        { isMoreThanOneRecipe && <RecipeCard /> }
       </div>
     </>
   );
