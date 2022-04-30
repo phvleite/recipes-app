@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProfileIcon from '../images/profileIcon.svg';
 import SearchIcon from '../images/searchIcon.svg';
 import RecipesContext from '../context/RecipesContext';
+import '../css/Header.css';
 
 const Header = (props) => {
   const { title } = props;
@@ -38,18 +39,22 @@ const Header = (props) => {
   });
 
   return (
-    <header>
-      <div>
-        <Link exact to="/profile">
-          <img src={ ProfileIcon } alt="icone perfil" data-testid="profile-top-btn" />
-        </Link>
-      </div>
-      <div data-testid="page-title">{ title }</div>
-      <div>
-        {
-          isRend
+    <header className="box-header">
+      <div className="box-bnt-title-header">
+        <div className="box-profile-icon">
+          <Link exact to="/profile">
+            <img src={ ProfileIcon } alt="icone perfil" data-testid="profile-top-btn" />
+          </Link>
+        </div>
+        <div data-testid="page-title" className="box-title">
+          <h1>{ title }</h1>
+        </div>
+        <div className="box-btn-search">
+          {
+            isRend
           && (
             <button
+              className="btn-search"
               type="button"
               onClick={ () => setHideSearch(!hideSearch) }
             >
@@ -59,9 +64,10 @@ const Header = (props) => {
                 data-testid="search-top-btn"
               />
             </button>)
-        }
+          }
+        </div>
       </div>
-      <div>
+      <div className="box-search">
         {
           (hideSearch)
             ? (
@@ -73,7 +79,7 @@ const Header = (props) => {
                   value={ search }
                   onChange={ ({ target: { value } }) => setSearch(value) }
                 />
-                <div>
+                <div className="box-option-search">
                   <label htmlFor="ingrediente">
                     <input
                       type="radio"

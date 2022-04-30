@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import RecipesContext from '../context/RecipesContext';
+import '../css/RecipeCard.css';
 
 const RecipeCard = () => {
   const { dataRecipes } = useContext(RecipesContext);
@@ -15,6 +16,7 @@ const RecipeCard = () => {
         <div
           key={ index }
           data-testid={ `${index}-recipe-card` }
+          className="box-recipe-card"
         >
           <p
             data-testid={ `${index}-card-name` }

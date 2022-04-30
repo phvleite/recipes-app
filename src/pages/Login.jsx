@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import '../css/Login.css';
 
 function Login({ history }) {
   const [email, setEmail] = useState('');
@@ -31,30 +32,35 @@ function Login({ history }) {
   }
 
   return (
-    <form>
-      <input
-        type="email"
-        data-testid="email-input"
-        name="email"
-        value={ email }
-        onChange={ handleChange }
-      />
-      <input
-        type="password"
-        name="password"
-        data-testid="password-input"
-        value={ password }
-        onChange={ handleChange }
-        minLength="6"
-      />
-      <input
-        type="button"
-        data-testid="login-submit-btn"
-        value="Enter"
-        onClick={ submitForm }
-        disabled={ disabledButton }
-      />
-    </form>
+    <section className="box-login">
+      <form className="form-login">
+        <input
+          className="txt-login"
+          type="email"
+          data-testid="email-input"
+          name="email"
+          value={ email }
+          onChange={ handleChange }
+        />
+        <input
+          className="txt-login"
+          type="password"
+          name="password"
+          data-testid="password-input"
+          value={ password }
+          onChange={ handleChange }
+          minLength="6"
+        />
+        <input
+          className={ disabledButton ? 'btn-login-disable' : 'btn-login' }
+          type="button"
+          data-testid="login-submit-btn"
+          value="Enter"
+          onClick={ submitForm }
+          disabled={ disabledButton }
+        />
+      </form>
+    </section>
   );
 }
 

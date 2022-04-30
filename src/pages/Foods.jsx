@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 
@@ -24,6 +25,7 @@ function Foods() {
         { isMoreThanOneRecipe && <RecipeCard /> }
         { noRecipes && global.alert(`${message1}'${message2}`) }
       </div>
+      <Footer title="Foods" />
     </>
   );
 }
