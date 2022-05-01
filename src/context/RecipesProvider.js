@@ -14,6 +14,7 @@ function RecipesProvider({ children }) {
     if (returnAPI.length === 0) {
       setDataReturnRecipes('emptyReturn');
     }
+    setDataReturnRecipes('');
     setDataRecipes(returnAPI);
   }
 

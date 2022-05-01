@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import LogoApp from '../images/num-e-so-pave-logo.svg';
 import '../css/Login.css';
 
 function Login({ history }) {
@@ -33,6 +34,9 @@ function Login({ history }) {
 
   return (
     <section className="box-login">
+      <div className="logo-app">
+        <img src={ LogoApp } alt="Logo App" />
+      </div>
       <form className="form-login">
         <input
           className="txt-login"

@@ -18,16 +18,19 @@ const RecipeCard = () => {
           data-testid={ `${index}-recipe-card` }
           className="box-recipe-card"
         >
-          <p
+          <div
             data-testid={ `${index}-card-name` }
+            className="box-title-recipe-card"
           >
             {element.strMeal || element.strDrink}
-          </p>
-          <img
-            alt={ element.strMeal || element.strDrink }
-            src={ element.strMealThumb || element.strDrinkThumb }
-            data-testid={ `${index}-card-img` }
-          />
+          </div>
+          <div className="box-img-recipe-card">
+            <img
+              alt={ element.strMeal || element.strDrink }
+              src={ element.strMealThumb || element.strDrinkThumb }
+              data-testid={ `${index}-card-img` }
+            />
+          </div>
         </div>
       ))
   );

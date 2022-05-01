@@ -76,12 +76,14 @@ const Header = (props) => {
                   type="text"
                   name="search"
                   data-testid="search-input"
+                  className="box-input-search"
                   value={ search }
                   onChange={ ({ target: { value } }) => setSearch(value) }
                 />
                 <div className="box-option-search">
-                  <label htmlFor="ingrediente">
+                  <label htmlFor="ingrediente" className="box-label-search">
                     <input
+                      className="box-radio-search"
                       type="radio"
                       name="search"
                       id={ `fetch${typeRecipes()}ByIngredient` }
@@ -90,8 +92,9 @@ const Header = (props) => {
                     />
                     Ingrediente
                   </label>
-                  <label htmlFor="nome">
+                  <label htmlFor="nome" className="box-label-search">
                     <input
+                      className="box-radio-search"
                       type="radio"
                       name="search"
                       id={ `fetch${typeRecipes()}ByName` }
@@ -100,8 +103,9 @@ const Header = (props) => {
                     />
                     Nome
                   </label>
-                  <label htmlFor="primeiraLetra">
+                  <label htmlFor="primeiraLetra" className="box-label-search">
                     <input
+                      className="box-radio-search"
                       type="radio"
                       name="search"
                       id={ `fetch${typeRecipes()}ByFirstLetter` }
@@ -111,6 +115,7 @@ const Header = (props) => {
                     Primeira Letra
                   </label>
                   <button
+                    className="btn-box-search"
                     type="button"
                     data-testid="exec-search-btn"
                     onClick={ onClick }
