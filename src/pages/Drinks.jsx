@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
+import Footer from '../components/Footer';
 
 function Drinks() {
   const { selectedOption, dataRecipes, dataReturnRecipes } = useContext(RecipesContext);
@@ -24,6 +25,7 @@ function Drinks() {
         { isMoreThanOneRecipe && <RecipeCard /> }
         { noRecipes && global.alert(`${message1}'${message2}`) }
       </div>
+      <Footer />
     </>
   );
 }

@@ -25,7 +25,7 @@ function Foods() {
         { isMoreThanOneRecipe && <RecipeCard /> }
         { noRecipes && global.alert(`${message1}'${message2}`) }
       </div>
-      <Footer title="Foods" />
+      <Footer />
     </>
   );
 }
