@@ -42,7 +42,7 @@ const Header = (props) => {
     <header className="box-header">
       <div className="box-bnt-title-header">
         <div className="box-profile-icon">
-          <Link exact to="/profile">
+          <Link to="/profile">
             <img src={ ProfileIcon } alt="icone perfil" data-testid="profile-top-btn" />
           </Link>
         </div>

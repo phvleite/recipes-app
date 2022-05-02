@@ -12,17 +12,17 @@ const Footer = () => (
     className="box-footer"
   >
     <div>
-      <Link exact to="/drinks">
+      <Link to="/drinks">
         <img src={ drinkIcon } alt="icone drinks" data-testid="drinks-bottom-btn" />
       </Link>
     </div>
     <div>
-      <Link exact to="/explore">
+      <Link to="/explore">
         <img src={ exploreIcon } alt="icone explorar" data-testid="explore-bottom-btn" />
       </Link>
     </div>
     <div>
-      <Link exact to="/foods">
+      <Link to="/foods">
         <img src={ mealIcon } alt="icone meals" data-testid="food-bottom-btn" />
       </Link>
     </div>
