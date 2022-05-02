@@ -8,6 +8,7 @@ function RecipesProvider({ children }) {
   const [selectedOption, setSelectedOption] = useState('');
   const [dataRecipes, setDataRecipes] = useState([]);
   const [dataReturnRecipes, setDataReturnRecipes] = useState('');
+  const [dataCategory, setDataCategory] = useState('');
 
   async function onClick() {
     const returnAPI = await fetchAPI(selectedOption, search);
@@ -31,7 +32,8 @@ function RecipesProvider({ children }) {
     onClick,
     dataRecipes,
     dataReturnRecipes,
-    setFunctions: { setDataRecipes },
+    dataCategory,
+    setFunctions: { setDataRecipes, setDataCategory },
   };
 
   return (

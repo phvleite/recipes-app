@@ -11,7 +11,7 @@ function Foods() {
     selectedOption,
     dataRecipes,
     dataReturnRecipes,
-    setFunctions: { setDataRecipes },
+    setFunctions: { setDataRecipes, setDataCategory },
   } = useContext(RecipesContext);
 
   const optionSelected = selectedOption === 'fetchMealByName'
@@ -24,14 +24,15 @@ function Foods() {
 
   useEffect(() => {
     fetchAPI('fetchMealByName', '').then((data) => setDataRecipes(data));
-  }, [setDataRecipes]);
+    fetchAPI('fetchMealListCategory', '').then((data) => setDataCategory(data));
+  }, [setDataRecipes, setDataCategory]);
 
   return (
     <>
       <Header title="Foods" />
       <div>
         { isOneRecipe && <Redirect to={ `/foods/${dataRecipes[0].idMeal}` } /> }
-        { <RecipeCard /> }
+        <RecipeCard />
         { noRecipes && global.alert(`${message}`) }
       </div>
       <Footer />
