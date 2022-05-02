@@ -17,3 +17,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.box-login {
+  background-image: url(./images/fundo-orange-img-white-75.svg);
+}
