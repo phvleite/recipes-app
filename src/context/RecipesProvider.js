@@ -31,6 +31,7 @@ function RecipesProvider({ children }) {
     onClick,
     dataRecipes,
     dataReturnRecipes,
+    setFunctions: { setDataRecipes },
   };
 
   return (
