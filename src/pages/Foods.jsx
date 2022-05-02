@@ -31,6 +31,9 @@ function Foods() {
     <>
       <Header title="Foods" />
       <div>
+        <p>f</p>
+      </div>
+      <div>
         { isOneRecipe && <Redirect to={ `/foods/${dataRecipes[0].idMeal}` } /> }
         <RecipeCard />
         { noRecipes && global.alert(`${message}`) }
