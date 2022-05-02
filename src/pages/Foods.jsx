@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 import fetchAPI from '../helpers/fetchAPI';
+
+const MAGIC_NUMBER = 5;
 
 function Foods() {
   const {
@@ -13,6 +15,8 @@ function Foods() {
     dataReturnRecipes,
     setFunctions: { setDataRecipes, setDataCategory },
   } = useContext(RecipesContext);
+
+  const [categories, setCategories] = useState([]);
 
   const optionSelected = selectedOption === 'fetchMealByName'
     || selectedOption === 'fetchCocktailByName';
@@ -24,14 +28,25 @@ function Foods() {
 
   useEffect(() => {
     fetchAPI('fetchMealByName', '').then((data) => setDataRecipes(data));
-    fetchAPI('fetchMealListCategory', '').then((data) => setDataCategory(data));
+    fetchAPI('fetchMealListCategory', '').then((data) => setCategories(data));
   }, [setDataRecipes, setDataCategory]);
 
   return (
     <>
       <Header title="Foods" />
       <div>
-        <p>f</p>
+        <ul>
+          {
+            categories.map(({ strCategory }) => (
+              <li
+                key={ strCategory }
+                data-testid={ `${strCategory}-category-filter` }
+              >
+                {strCategory }
+              </li>
+            )).slice(0, MAGIC_NUMBER)
+          }
+        </ul>
       </div>
       <div>
         { isOneRecipe && <Redirect to={ `/foods/${dataRecipes[0].idMeal}` } /> }
