@@ -1,5 +1,5 @@
 .box-recipe-card {
-  align-items: center;
+  align-items: top;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
