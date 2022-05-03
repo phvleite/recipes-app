@@ -34,11 +34,18 @@ function Foods() {
   return (
     <>
       <Header title="Foods" />
-      <div>
-        <ul>
+      <div className="box-filters-category">
+        <ul className="list-filters-category">
+          <li
+            className="filter-category"
+            data-testid="All-category-filter"
+          >
+            All
+          </li>
           {
             categories.map(({ strCategory }) => (
               <li
+                className="filter-category"
                 key={ strCategory }
                 data-testid={ `${strCategory}-category-filter` }
               >
@@ -48,7 +55,7 @@ function Foods() {
           }
         </ul>
       </div>
-      <div>
+      <div className="box-principal">
         { isOneRecipe && <Redirect to={ `/foods/${dataRecipes[0].idMeal}` } /> }
         <RecipeCard />
         { noRecipes && global.alert(`${message}`) }

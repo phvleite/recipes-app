@@ -5,17 +5,10 @@ import '../css/RecipeCard.css';
 const RecipeCard = () => {
   const { dataRecipes } = useContext(RecipesContext);
 
-  // const magicNumber05 = 5;
   const magicNumber12 = 12;
   const dataRecipes12 = dataRecipes
     .filter((element, index) => index < magicNumber12)
     .map((element) => element);
-
-  // const dataCategory05 = dataCategory
-  //   .filter((category, ind) => ind < magicNumber05)
-  //   .map((category) => category);
-
-  // console.log(dataCategory05);
 
   return (
     dataRecipes12
