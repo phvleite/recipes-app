@@ -33,7 +33,7 @@ function Drinks() {
   }, [setDataRecipes]);
 
   function getFilterCategory({ target: { value } }) {
-    if (filterBy === '' || filterBy !== value) {
+    if ((filterBy === '' || filterBy !== value) && value !== 'All') {
       fetchByCategories('cocktail', value).then((data) => setDataRecipes(data));
       setFilterBy(value);
     } else {
