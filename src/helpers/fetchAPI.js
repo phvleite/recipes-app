@@ -1,4 +1,4 @@
-/* const fetchByCategories = async (mealOrDrink, category) => {
+const fetchByCategories = async (mealOrDrink, category) => {
   try {
     const response = await fetch(`https://www.the${mealOrDrink}db.com/api/json/v1/1/filter.php?c=${category}`);
     const data = await response.json();
@@ -8,8 +8,6 @@
     console.error(error);
   }
 };
-
-export default fetchByCategories; */
 
 const fetchAPI = async (chooseUrl, query) => {
   const verifyUrl = {
@@ -55,4 +53,4 @@ const fetchAPI = async (chooseUrl, query) => {
   }
 };
 
-export default fetchAPI;
+export { fetchAPI, fetchByCategories };

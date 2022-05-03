@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
-import fetchAPI from '../helpers/fetchAPI';
+import { fetchAPI } from '../helpers/fetchAPI';
 
 function RecipesProvider({ children }) {
   const [search, setSearch] = useState('');
   const [selectedOption, setSelectedOption] = useState('');
   const [dataRecipes, setDataRecipes] = useState([]);
   const [dataReturnRecipes, setDataReturnRecipes] = useState('');
-  const [dataCategory, setDataCategory] = useState('');
 
   async function onClick() {
     const returnAPI = await fetchAPI(selectedOption, search);
@@ -32,8 +31,7 @@ function RecipesProvider({ children }) {
     onClick,
     dataRecipes,
     dataReturnRecipes,
-    dataCategory,
-    setFunctions: { setDataRecipes, setDataCategory },
+    setFunctions: { setDataRecipes },
   };
 
   return (
