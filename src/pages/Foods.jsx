@@ -73,7 +73,7 @@ function Foods() {
       </div>
       <div className="box-principal">
         { isOneRecipe && <Redirect to={ `/foods/${dataRecipes[0].idMeal}` } /> }
-        <RecipeCard />
+        <RecipeCard recipeType="foods" />
         { noRecipes && global.alert(`${message}`) }
       </div>
       <Footer />
