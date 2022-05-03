@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import RecipesContext from '../context/RecipesContext';
 import Footer from '../components/Footer';
-import fetchAPI from '../helpers/fetchAPI';
+import { fetchAPI, fetchByCategories } from '../helpers/fetchAPI';
 
 const MAGIC_NUMBER = 5;
 
@@ -17,6 +17,7 @@ function Drinks() {
   } = useContext(RecipesContext);
 
   const [categories, setCategories] = useState([]);
+  const [filterBy, setFilterBy] = useState('');
 
   const optionSelected = selectedOption === 'fetchMealByName'
     || selectedOption === 'fetchCocktailByName';
@@ -31,25 +32,40 @@ function Drinks() {
     fetchAPI('fetchCocktailListCategory', '').then((data) => setCategories(data));
   }, [setDataRecipes]);
 
+  function getFilterCategory({ target: { value } }) {
+    if (filterBy === '' || filterBy !== value) {
+      fetchByCategories('cocktail', value).then((data) => setDataRecipes(data));
+      setFilterBy(value);
+    } else {
+      fetchAPI('fetchCocktailByName', '').then((data) => setDataRecipes(data));
+      setFilterBy('');
+    }
+  }
+
   return (
     <>
       <Header title="Drinks" />
       <div className="box-filters-category">
         <ul className="list-filters-category">
-          <li
-            className="filter-category"
-            data-testid="All-category-filter"
-          >
-            All
+          <li>
+            <input
+              type="button"
+              className="filter-category"
+              data-testid="All-category-filter"
+              value="All"
+              onClick={ getFilterCategory }
+            />
           </li>
           {
             categories.map(({ strCategory }) => (
-              <li
-                className="filter-category"
-                key={ strCategory }
-                data-testid={ `${strCategory}-category-filter` }
-              >
-                {strCategory }
+              <li key={ strCategory }>
+                <input
+                  type="button"
+                  className="filter-category"
+                  data-testid={ `${strCategory}-category-filter` }
+                  value={ `${strCategory}` }
+                  onClick={ getFilterCategory }
+                />
               </li>
             )).slice(0, MAGIC_NUMBER)
           }
