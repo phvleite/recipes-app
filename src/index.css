@@ -23,16 +23,15 @@ code {
 }
 
 .box-filters-category {
-  align-items: center;
   display: flex;
-  justify-content: center;
-  padding: 2px;
+  height: 80px;
 }
 
 .box-filters-category ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 100%;
 }
 
 .box-filters-category li {

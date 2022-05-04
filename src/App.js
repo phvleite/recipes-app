@@ -43,7 +43,11 @@ function App() {
           render={ (props) => <InProgress { ...props } /> }
         />
         <Route exact path="/explore" component={ Explore } />
-        <Route exact path="/explore/foods" component={ ExploreFoods } />
+        <Route
+          exact
+          path="/explore/foods"
+          render={ (props) => <ExploreFoods { ...props } /> }
+        />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
         <Route exact path="/explore/foods/ingredients" component={ Ingredients } />
         <Route exact path="/explore/drinks/ingredients" component={ Ingredients } />
