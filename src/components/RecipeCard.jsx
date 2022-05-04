@@ -3,18 +3,15 @@ import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import '../css/RecipeCard.css';
 
+const MAGIC_NUMBER = 12;
+
 const RecipeCard = ({ recipeType }) => {
   const { dataRecipes } = useContext(RecipesContext);
-
-  const magicNumber12 = 12;
-  const dataRecipes12 = dataRecipes
-    .filter((element, index) => index < magicNumber12)
-    .map((element) => element);
 
   const idRecipeType = (recipeType === 'foods') ? 'idMeal' : 'idDrink';
 
   return (
-    dataRecipes12
+    dataRecipes
       .map((element, index) => (
         <div
           key={ index }
@@ -37,7 +34,7 @@ const RecipeCard = ({ recipeType }) => {
             </div>
           </Link>
         </div>
-      ))
+      )).slice(0, MAGIC_NUMBER)
   );
 };
 
