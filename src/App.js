@@ -14,6 +14,7 @@ import ExploreDrinks from './pages/ExploreDrinks';
 import Ingredients from './pages/Ingredients';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Details from './pages/Details';
 
 function App() {
   return (
@@ -23,14 +24,14 @@ function App() {
         <Route exact path="/foods" component={ Foods } />
         <Route
           exact
-          path="/foods/id-da-receita:"
-          render={ (props) => <Foods { ...props } /> }
+          path="/foods/:id"
+          render={ (props) => <Details { ...props } /> }
         />
         <Route exact path="/drinks" component={ Drinks } />
         <Route
           exact
-          path="/drinks/id-da-receita:"
-          render={ (props) => <Drinks { ...props } /> }
+          path="/drinks/:id"
+          render={ (props) => <Details { ...props } /> }
         />
         <Route
           exact
