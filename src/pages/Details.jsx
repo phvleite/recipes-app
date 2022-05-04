@@ -13,13 +13,18 @@ function Details({ history }) {
 
   useEffect(() => {
     fetchAPI(`fetch${recipeType}ById`, url[1]).then((arr) => setRecipeDetails(arr));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filterIngredients = Object
-    .entries(recipeDetails)
+    .entries(recipeDetails[0])
     .filter((key) => key[0].includes('strIngredient') && key[1])
     .map((e) => e[1]);
-  console.log(filterIngredients);
+
+  const filterMeasures = Object
+    .entries(recipeDetails[0])
+    .filter((key) => key[0].includes('strMeasure') && key[1])
+    .map((e) => e[1]);
 
   return recipeDetails.map((recipe) => (
     <div key={ recipe.strMeal || recipe.strDrink }>
@@ -46,6 +51,18 @@ function Details({ history }) {
       <h3 data-testid="recipe-category">
         { recipe.strCategory }
       </h3>
+      <ol>
+        {
+          filterIngredients.map((ingredient, index) => (
+            <li
+              key={ `${index}${ingredient}` }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
+              {`${ingredient} - ${filterMeasures[index]}`}
+            </li>
+          ))
+        }
+      </ol>
       <span data-testid="instructions">
         { recipe.strInstructions }
       </span>
@@ -62,6 +79,9 @@ function Details({ history }) {
       <div>
         <div data-testid="0-recomendation-card">recomendações</div>
       </div>
+      <button type="button" data-testid="start-recipe-btn">
+        Start Recipe
+      </button>
     </div>
   ));
 }
