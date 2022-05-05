@@ -27,7 +27,7 @@ function Details({ history }) {
     .map((e) => e[1]);
 
   return recipeDetails.map((recipe) => (
-    <div key={ recipe.strMeal || recipe.strDrink }>
+    <div key="recipe">
       <img
         data-testid="recipe-photo"
         alt={ recipe.strMeal || recipe.strDrink }
