@@ -34,6 +34,10 @@ const fetchAPI = async (chooseUrl, query) => {
     // Lista de ingredientes
     fetchMealIngredientsByList: 'https://www.themealdb.com/api/json/v1/1/list.php?i=list',
     fetchCocktailIngredientsByList: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list',
+
+    // Surprise me - receita aleatória
+    fetchMealSurpriseMe: 'https://www.themealdb.com/api/json/v1/1/random.php',
+    fetchCocktailSurpriseMe: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
   };
 
   if (query.length !== 1
