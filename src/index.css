@@ -59,3 +59,26 @@ code {
   padding-bottom: 70px;
 }
  */
+
+.imagemAjuste {
+  max-width: 90%;
+  display: flex;
+}
+
+.imagemAjuste img {
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.recomendation-card {
+  width: 50%;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin: 5px;
+}
+
+.constainerSlide {
+  width: 200px;
+  overflow: hidden;
+}

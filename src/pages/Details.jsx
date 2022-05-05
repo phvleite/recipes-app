@@ -111,24 +111,26 @@ function Details({ history }) {
       {
         <div>
           <div>Recomendações</div>
-          <div>
+          <div className="constainerSlide">
             <Slider { ...settings }>
               {
                 url[0] === 'foods'
             && cocktailRecomendation.map((drinksRecomendation, index) => (
               index < magic6 && (
                 <div
+                  className="recomendation-card"
                   key={ `teste${drinksRecomendation.strMeal}` }
                   data-testid={ `${index}-recomendation-card` }
                 >
                   <Link to={ `/drinks/${drinksRecomendation.idDrink}` }>
                     <div>
-                      <img
-                        alt={ drinksRecomendation.strMeal
-                          || drinksRecomendation.strDrink }
-                        src={ drinksRecomendation.strMealThumb
-                        || drinksRecomendation.strDrinkThumb }
-                      />
+                      <div className="imagemAjuste">
+                        <img
+                          alt={ drinksRecomendation.strDrink }
+                          src={ drinksRecomendation.strDrinkThumb }
+                        />
+                      </div>
+
                       <p
                         data-testid={ `${index}-recomendation-title` }
                       >
@@ -144,17 +146,18 @@ function Details({ history }) {
               && mealRecomendation.map((foodsRecomendation, index) => (
                 index < magic6 && (
                   <div
+                    className="recomendation-card"
                     key={ `teste${foodsRecomendation.strMeal}` }
                     data-testid={ `${index}-recomendation-card` }
                   >
-                    <Link to={ `/foods/${foodsRecomendation.idDrink}` }>
+                    <Link to={ `/foods/${foodsRecomendation.idFoods}` }>
                       <div>
-                        <img
-                          alt={ foodsRecomendation.strMeal
-                            || foodsRecomendation.strDrink }
-                          src={ foodsRecomendation.strMealThumb
-                          || foodsRecomendation.strDrinkThumb }
-                        />
+                        <div className="imagemAjuste">
+                          <img
+                            alt={ foodsRecomendation.strMeal }
+                            src={ foodsRecomendation.strMealThumb }
+                          />
+                        </div>
                         <p
                           data-testid={ `${index}-recomendation-title` }
                         >
