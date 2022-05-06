@@ -13,12 +13,16 @@ function Details({ history }) {
 
   const [mealRecomendation, setMealRecomendation] = useState([]);
   const [cocktailRecomendation, setCocktailRecomendation] = useState([]);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   const { location: { pathname } } = history;
   const url = pathname.split('/').slice(1);
   const recipeType = (url[0] === 'foods') ? 'Meal' : 'Cocktail';
 
-  console.log(pathname);
+  function copyText() {
+    setCopiedLink(true);
+    navigator.clipboard.writeText(`http://localhost:3000${pathname}`);
+  }
 
   useEffect(() => {
     fetchAPI(`fetch${recipeType}ById`, url[1]).then((arr) => setRecipeDetails(arr));
@@ -68,12 +72,16 @@ function Details({ history }) {
         {recipe.strAlcoholic}
       </h3>
 
-      <button
-        type="button"
-        data-testid="share-btn"
-      >
-        <img src={ shareIcon } alt="share button" />
-      </button>
+      { !copiedLink ? (
+        <button
+          type="button"
+          data-testid="share-btn"
+          onClick={ copyText }
+        >
+          <img src={ shareIcon } alt="share button" />
+        </button>
+      ) : <p>Link copied!</p>}
+
       <button
         type="button"
         data-testid="favorite-btn"
