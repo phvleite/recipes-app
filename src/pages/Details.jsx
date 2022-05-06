@@ -18,8 +18,6 @@ function Details({ history }) {
   const url = pathname.split('/').slice(1);
   const recipeType = (url[0] === 'foods') ? 'Meal' : 'Cocktail';
 
-  console.log((url[0] === 'foods'));
-
   useEffect(() => {
     fetchAPI(`fetch${recipeType}ById`, url[1]).then((arr) => setRecipeDetails(arr));
 
@@ -172,7 +170,7 @@ function Details({ history }) {
           </div>
         </div>
       }
-      <button type="button" data-testid="start-recipe-btn">
+      <button id="start-recipe-btn" type="button" data-testid="start-recipe-btn">
         Start Recipe
       </button>
     </div>
