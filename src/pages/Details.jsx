@@ -170,14 +170,12 @@ function Details({ history }) {
           </div>
         </div>
       }
-      <button id="start-recipe-btn" type="button" data-testid="start-recipe-btn">
+      <button className="start-recipe-btn" type="button" data-testid="start-recipe-btn">
         Start Recipe
       </button>
     </div>
   ));
 }
-
-/* 'teste' */
 
 Details.propTypes = { history: PropTypes.objectOf() }.isRequired;
 
