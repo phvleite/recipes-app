@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function Profile({ history }) {
-  const [email, setEmail] = useState('');
-
-  useEffect(() => setEmail(JSON.parse(localStorage.user).email), []);
+  const email = (localStorage.user) ? JSON.parse(localStorage.user).email : 'email';
 
   return (
     <>
@@ -36,7 +34,6 @@ function Profile({ history }) {
         </button>
       </div>
       <Footer />
-      { console.log(email) }
     </>
   );
 }
